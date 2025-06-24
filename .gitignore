@@ -1,0 +1,4 @@
+echo "node_modules/" >> .gitignore
+echo ".vite/" >> .gitignore
+echo "dist/" >> .gitignore
+node_modules
