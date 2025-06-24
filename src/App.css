@@ -1,0 +1,254 @@
+.App {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.legend-box {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  min-width: 180px;
+  font-family: 'Inter', sans-serif;
+}
+
+.map-controls h3 {
+  margin: 0 0 15px 0;
+  color: #333;
+  font-size: 16px;
+  text-align: center;
+}
+
+.control-button {
+  margin: 3px;
+  padding: 8px 12px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.2s;
+  font-weight: 500;
+}
+
+.control-button:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+.control-button:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.control-button:active {
+  transform: translateY(1px);
+}
+
+.map-controls > div {
+  margin: 10px 0;
+}
+
+.map-controls label {
+  color: #555;
+  font-size: 13px;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.train-icon {
+  background: transparent !important;
+  border: none !important;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: trainMove 3s ease-in-out infinite;
+}
+
+@keyframes trainMove {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.1) rotate(-2deg);
+  }
+  50% {
+    transform: scale(1) rotate(0deg);
+  }
+  75% {
+    transform: scale(1.1) rotate(2deg);
+  }
+}
+
+.train-popup .leaflet-popup-content {
+  margin: 8px 12px;
+  line-height: 1.4;
+}
+
+.train-popup .leaflet-popup-content-wrapper {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 6px;
+}
+
+.leaflet-popup-content strong {
+  color: #007bff;
+  font-size: 14px;
+}
+
+.leaflet-popup-content {
+  font-size: 12px;
+  color: #333;
+}
+
+/* Custom marker styles */
+.leaflet-marker-icon {
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .map-controls {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    min-width: auto;
+    padding: 10px;
+  }
+  
+  .map-controls h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .control-button {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+}
+
+/* Loading animation for when map is initializing */
+.map-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f0f0f0;
+  font-size: 18px;
+  color: #666;
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-right: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Pure DOM element labels - styled like native map labels */
+.pure-map-label {
+  position: absolute;
+  background: none;
+  color: #000;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  font-weight: bold;
+  font-size: 12px;
+  text-shadow: 1px 1px 0px #fff, -1px -1px 0px #fff, 1px -1px 0px #fff, -1px 1px 0px #fff;
+  box-shadow: none;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  font-family: Arial, sans-serif;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  pointer-events: none;
+}
+
+/* Hide only train marker icons and shadows */
+.leaflet-marker-icon.train-icon,
+.leaflet-marker-shadow {
+  display: none !important;
+}
+
+/* Ensure moving circles are visible */
+.leaflet-marker-icon.moving-circle {
+  display: block !important;
+}
+
+/* Hide default map text labels */
+.leaflet-tile-pane img {
+  filter: contrast(1.1) brightness(1.05);
+}
+
+/* Hide default map labels for cleaner look */
+.leaflet-control-attribution {
+  font-size: 10px !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Enhanced train markers */
+.leaflet-marker-icon.train-icon {
+  filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.4)) !important;
+}
+
+/* Ensure custom labels are always on top */
+.map-label-override {
+  z-index: 1000 !important;
+}
+
+/* Style for different zoom levels */
+@media screen and (max-width: 768px) {
+  .custom-map-label {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+}
+
+/* Legend styles */
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+  font-size: 12px;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 8px;
+  border: 1px solid #ccc;
+  flex-shrink: 0;
+}
+
+.legend-text {
+  color: #333;
+  font-weight: 500;
+}
+
+/* Moving circle styles */
+.moving-circle {
+  background: transparent !important;
+  border: none !important;
+  z-index: 1000;
+}
+
+.moving-circle div {
+  transition: none !important;
+}
