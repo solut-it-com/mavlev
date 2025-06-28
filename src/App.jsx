@@ -226,6 +226,7 @@ function App() {
   const [speed, setSpeed] = useState(1);
   const [trains, setTrains] = useState([]);
   const [movingCircles, setMovingCircles] = useState([]);
+  const [showAlert, setShowAlert] = useState(true);
 
   useEffect(() => {
     // Create train objects from routes
@@ -284,6 +285,37 @@ function App() {
 
   return (
     <div className="App">
+      {/* Popup Alert */}
+      {showAlert && (
+        <div className="alert-overlay">
+          <div className="alert-popup">
+            {/* <div className="alert-header">
+              <h3>Üdvözöljük a Pontosvonat térképen!</h3>
+              <button 
+                className="alert-close-btn"
+                onClick={() => setShowAlert(false)}
+                aria-label="Bezárás"
+              >
+                ×
+              </button>
+            </div> */}
+            <div className="alert-content">
+              <p>A megfelelő utastájékoztatás jegyében </p>
+              <p>A színes körök a vonatok aktuális késését jelzik:</p>
+
+            </div>
+            <div className="alert-footer">
+              <button 
+                className="alert-ok-btn"
+                onClick={() => setShowAlert(false)}
+              >
+                Bezárás
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Color Legend - Bottom Right */}
       <div className="legend-box">
         <h4 style={{ margin: '0 0 10px 0', fontSize: '14px', color: '#333' }}>Színek jelentése</h4>

@@ -252,3 +252,164 @@
 .moving-circle div {
   transition: none !important;
 }
+
+/* Alert Popup Styles */
+.alert-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  backdrop-filter: blur(2px);
+}
+
+.alert-popup {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  animation: alertSlideIn 0.3s ease-out;
+}
+
+@keyframes alertSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.alert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 10px 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.alert-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.alert-close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.alert-close-btn:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.alert-content {
+  padding: 20px;
+  line-height: 1.6;
+}
+
+.alert-content p {
+  margin: 0 0 15px 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.alert-content ul {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.alert-content li {
+  margin: 8px 0;
+  color: #555;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.color-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+  border: 1px solid #ccc;
+}
+
+.color-indicator.green {
+  background-color: rgb(84, 255, 63);
+}
+
+.color-indicator.yellow {
+  background-color: rgb(254, 250, 76);
+}
+
+.alert-footer {
+  padding: 15px 20px 20px 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.alert-ok-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.alert-ok-btn:hover {
+  background: #0056b3;
+}
+
+.alert-ok-btn:active {
+  transform: translateY(1px);
+}
+
+/* Responsive design for alert */
+@media (max-width: 768px) {
+  .alert-popup {
+    width: 95%;
+    margin: 20px;
+  }
+  
+  .alert-header h3 {
+    font-size: 16px;
+  }
+  
+  .alert-content {
+    padding: 15px;
+  }
+  
+  .alert-content p,
+  .alert-content li {
+    font-size: 13px;
+  }
+}
